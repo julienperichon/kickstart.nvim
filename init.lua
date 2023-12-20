@@ -267,6 +267,11 @@ vim.g.clipboard = {
 
 -- Enable break indent
 vim.o.breakindent = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -288,6 +293,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+vim.o.scrolloff = 8
 
 vim.g.python3_host_prog = '/home/julien/.pyenv/versions/neovim3/bin/python'
 
