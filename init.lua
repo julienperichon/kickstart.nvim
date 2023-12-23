@@ -252,18 +252,21 @@ vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
 
 -- Enable copy from Neovim to OS on WSL
-vim.g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ['+'] = 'clip.exe',
-    ['*'] = 'clip.exe',
-  },
-  paste = {
-    ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  },
-  cache_enabled = 0,
-}
+-- TODO: Replace with sysname value on WSL
+if vim.loop.os_uname().sysname ~= "Darwin" then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -295,7 +298,12 @@ vim.o.termguicolors = true
 
 vim.o.scrolloff = 8
 
-vim.g.python3_host_prog = '/home/julien/.pyenv/versions/neovim3/bin/python'
+-- TODO: Find better way to fill in this option depending on machine
+if vim.loop.os_uname().sysname == 'Darwin' then
+  vim.g.python3_host_prog = '/Users/julienperichon/.pyenv/versions/neovim3/bin/python'
+else
+  vim.g.python3_host_prog = '/home/julien/.pyenv/versions/neovim3/bin/python'
+end
 
 -- [[ Basic Keymaps ]]
 
