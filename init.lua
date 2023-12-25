@@ -547,6 +547,7 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   pyright = {},
+  taplo = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
