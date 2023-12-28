@@ -297,6 +297,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 vim.o.scrolloff = 8
+vim.o.guicursor=''
 
 -- TODO: Find better way to fill in this option depending on machine
 if vim.loop.os_uname().sysname == 'Darwin' then
